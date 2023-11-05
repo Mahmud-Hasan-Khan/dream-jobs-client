@@ -56,8 +56,8 @@ const Login = () => {
 
     return (
 
-        <div className='flex justify-center items-center'>
-            <div className='flex flex-col rounded-md sm:p-10 shadow-2xl bg-base-100 text-gray-900 px-4 border border-[#00d260]' data-aos="fade-up">
+        <div className='flex justify-center items-center my-2 lg:mt-10'>
+            <div className='flex flex-col rounded-md sm:p-10 shadow-2xl px-4 border border-[#00d260]' data-aos="fade-up">
                 <h1 className='my-4 text-4xl font-bold px-4 text-center' style={{ textShadow: '3px 3px 5px rgba(0, 0, 0, 0.4)' }}>
                     <Typewriter
                         cursor={false}
@@ -75,12 +75,12 @@ const Login = () => {
                     onSubmit={handleLoginWithEmailAndPassword}
                     noValidate=''
                     action=''
-                    className='space-y-6 ng-untouched ng-pristine ng-valid'
+                    className='space-y-6'
                 >
                     <div className='space-y-4'>
                         <div>
-                            <label htmlFor='email' className='inputLabel'>
-                                Email address
+                            <label className="label">
+                                <span className="inputLabel">Email address</span>
                             </label>
                             <input
                                 type='email'
