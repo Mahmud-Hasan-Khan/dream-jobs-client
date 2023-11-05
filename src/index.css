@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,5 +23,13 @@
 
     .btn-dream:hover {
         @apply bg-[#00eb6b] shadow-lg
+    }
+
+    .btn-login-logout {
+        @apply bg-[#f97316] px-2 rounded-full py-1.5 text-white text-lg font-medium
+    }
+
+    .btn-login-logout:hover {
+        @apply bg-[#ff9416] shadow-lg
     }
 }

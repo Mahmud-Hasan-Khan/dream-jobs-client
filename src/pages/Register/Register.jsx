@@ -69,8 +69,8 @@ const Register = () => {
                 <title>Dream Jobs | Register</title>
             </Helmet>
             <div className="hero my-2 lg:mt-10" data-aos="fade-up">
-                <div className="px-24 py-4 max-w-[752px] shadow-2xl rounded-lg border border-[#00d260]" data-aos="fade-up">
-                    <h1 className="text-4xl font-semibold text-center my-text ">Register Your Account</h1>
+                <div className="px-20 py-4 max-w-[752px] shadow-2xl rounded-lg border border-[#00d260]" data-aos="fade-up">
+                    <h1 className="text-2xl font-semibold text-center">Create an <span className="my-text">Dream Jobs</span> account</h1>
                     <div className="divider pt-1"></div>
 
                     <form onSubmit={handleRegister} className="space-y-2">

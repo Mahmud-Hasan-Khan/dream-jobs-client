@@ -54,10 +54,13 @@ const Navbar = () => {
         <li>
             <NavLink to="/myJobs" className={({ isActive }) => (isActive ? 'rounded-full my-bg text-white' : 'text-base rounded-full shadow-md border-b-2 border-[#00d260] my-text px-2 py-1')}>My Jobs</NavLink>
         </li>
+        <li>
+            <NavLink to="/blogs" className={({ isActive }) => (isActive ? 'rounded-full my-bg text-white' : 'text-base rounded-full shadow-md border-b-2 border-[#00d260] my-text px-2 py-1')}>Blogs</NavLink>
+        </li>
     </div>
 
     return (
-        <div className="navbar shadow rounded-md sticky top-0 z-10 bg-base-100">
+        <div className="navbar shadow rounded-md sticky top-0 z-10 bg-black">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="lg:hidden">
@@ -86,12 +89,12 @@ const Navbar = () => {
                     <li>
                         <NavLink to="/myJobs" className={({ isActive }) => (isActive ? 'rounded-full my-bg text-white' : 'text-base rounded-full shadow-md border-b-2 border-[#00d260] my-text px-2 py-1')}>My Jobs</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/blogs" className={({ isActive }) => (isActive ? 'rounded-full my-bg text-white' : 'text-base rounded-full shadow-md border-b-2 border-[#00d260] my-text px-2 py-1')}>Blogs</NavLink>
+                    </li>
                 </ul>
             </div>
             <div className="navbar-end space-x-1 lg:space-x-2 mr-3 lg:mr-0">
-                <div>
-                    <Link to='/blogs' className='text-base rounded-full shadow-md border-b-2 border-[#00d260] my-text px-2 py-1 font-medium'> Blogs</Link>
-                </div>
                 {
                     user ?
                         <>
@@ -105,11 +108,11 @@ const Navbar = () => {
                                 />
 
                             </div>
-                            <Link onClick={handleLogout} className='my-bg hover:bg-[#00a264] px-3 py-1.5 rounded-full text-white font-medium hover:shadow-md' to="/login">Logout</Link>
+                            <Link onClick={handleLogout} className='btn-login-logout' to="/login">Logout</Link>
                         </>
                         :
                         <>
-                            <Link className='my-bg hover:bg-[#00a264] px-3 py-1.5 rounded-full text-white font-medium hover:shadow-md' to="/login">Login</Link>
+                            <Link className='btn-login-logout' to="/login">Login</Link>
                         </>
                 }
                 <div>
