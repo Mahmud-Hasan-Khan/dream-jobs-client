@@ -3,31 +3,35 @@ import logoImg from '../assets/image/Logo_dream.png'
 import appleImg from '../assets/image/appStore.png'
 const Footer = () => {
     return (
-        <div className='bg-black p-10'>
+        <div className='bg-black p-10 rounded-md'>
             <div className="footer">
                 <aside>
                     <Link to='/'><img className='w-3/4' src={logoImg} alt="" /></Link>
                     <p className="text-[#cecaca] lg:w-96">Dream Jobs, your gateway to a world of career possibilities. Explore your passions, discover your dream job, and make your professional aspirations a reality with our comprehensive job search and career guidance platform.</p>
                 </aside>
                 <nav>
-                    <header className="text-xl font-semibold text-white">Services</header>
-                    <Link className="text-[#cecaca] hover:underline">Branding</Link>
-                    <Link className="text-[#cecaca] hover:underline">Design</Link>
-                    <Link className="text-[#cecaca] hover:underline">Marketing</Link>
-                    <Link className="text-[#cecaca] hover:underline">Advertisement</Link>
-                </nav>
-                <nav>
                     <header className="text-xl font-semibold text-white">Company</header>
                     <Link className="text-[#cecaca] hover:underline">About us</Link>
                     <Link className="text-[#cecaca] hover:underline">Contact</Link>
                     <Link className="text-[#cecaca] hover:underline">Jobs</Link>
-                    <Link className="text-[#cecaca] hover:underline">Press kit</Link>
                 </nav>
                 <nav>
                     <header className="text-xl font-semibold text-white">Legal</header>
                     <Link className="text-[#cecaca] hover:underline">Terms of use</Link>
                     <Link className="text-[#cecaca] hover:underline">Privacy policy</Link>
                     <Link className="text-[#cecaca] hover:underline">Cookie policy</Link>
+                </nav>
+                <nav>
+                    <header className="text-xl font-semibold text-white">Contact Information</header>
+                    <Link className="text-[#cecaca] hover:underline">Email: info@dreamjobs.com</Link>
+                    <Link className="text-[#cecaca] hover:underline">Web: www.dreamjobs.com</Link>
+                    <Link className="text-[#cecaca] hover:underline">Phone: +880 1521 353 320</Link>
+                </nav>
+                <nav>
+                    <header className="text-xl font-semibold text-white">Address</header>
+                    <Link className="text-[#cecaca] hover:underline">House: 23/3 A</Link>
+                    <Link className="text-[#cecaca] hover:underline">Road: 2, Banani</Link>
+                    <Link className="text-[#cecaca] hover:underline">Dhaka, Bangladesh</Link>
                 </nav>
             </div>
             <div className='text-center grid grid-cols-1 lg:grid-cols-2 p-10'>

@@ -57,7 +57,7 @@ const Navbar = () => {
     </div>
 
     return (
-        <div className="navbar shadow-xl sticky z-10">
+        <div className="navbar shadow rounded-md sticky z-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="lg:hidden">

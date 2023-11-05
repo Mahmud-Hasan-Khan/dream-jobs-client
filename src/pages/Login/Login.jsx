@@ -56,8 +56,8 @@ const Login = () => {
 
     return (
 
-        <div className='flex justify-center items-center my-2 lg:mt-10'>
-            <div className='flex flex-col rounded-md sm:p-10 shadow-2xl px-4 border border-[#00d260]' data-aos="fade-up">
+        <div className='flex justify-center items-center my-2 lg:my-10'>
+            <div className='flex flex-col rounded-md sm:p-10 shadow px-4 border border-[#00d260]' data-aos="fade-up">
                 <h1 className='my-4 text-4xl font-bold px-4 text-center' style={{ textShadow: '3px 3px 5px rgba(0, 0, 0, 0.4)' }}>
                     <Typewriter
                         cursor={false}
