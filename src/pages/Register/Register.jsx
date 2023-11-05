@@ -7,6 +7,7 @@ import auth from "../../config/firebase.config";
 import { ImSpinner3 } from "react-icons/im";
 import Aos from "aos";
 import 'aos/dist/aos.css';
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -64,6 +65,9 @@ const Register = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Dream Jobs | Register</title>
+            </Helmet>
             <div className="hero my-2 lg:mt-10" data-aos="fade-up">
                 <div className="px-24 py-4 max-w-[752px] shadow-2xl rounded-lg border border-[#00d260]" data-aos="fade-up">
                     <h1 className="text-4xl font-semibold text-center my-text ">Register Your Account</h1>
