@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .my-bg {
+        @apply bg-[#00d260]
+    }
+
+    .my-text {
+        @apply text-[#00d260]
+    }
+
+    .inputLabel {
+        @apply text-base font-semibold
+    }
+
+    .btn-dream {
+        @apply bg-[#00d260] w-full rounded-md py-3 text-white text-lg font-medium
+    }
+
+    .btn-dream:hover {
+        @apply bg-[#00eb6b] shadow-lg
+    }
+}
