@@ -16,7 +16,7 @@
     }
 
     .btn-dream {
-        @apply bg-[#00d260] w-full rounded-md py-3 text-white text-lg font-medium
+        @apply bg-[#00d260] w-full rounded-md py-3 px-2 text-white text-lg font-medium
     }
 
     .btn-dream:hover {
