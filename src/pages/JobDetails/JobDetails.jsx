@@ -5,15 +5,14 @@ import useAuth from "../../hook/useAuth";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
-
-// Register the Daisy UI modal component
-
-
 const JobDetails = () => {
     const { user } = useAuth();
     const { email, displayName } = user;
 
-    const { bannerURL, companyLogoURL, jobTitle, jobDescription, salaryRange, jobApplicants, applicationDeadline, userEmail } = useLoaderData();
+    const { _id, bannerURL, companyLogoURL, jobTitle, jobDescription, salaryRange, jobApplicants, applicationDeadline, userEmail } = useLoaderData();
+
+    // update Job Applicants number
+    const [jobApplicantsCount, setJobApplicantsCount] = useState(jobApplicants);
 
     // Define state to control the modal visibility
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,7 +35,6 @@ const JobDetails = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
-
 
     const handleApplyJob = (e) => {
         e.preventDefault();
@@ -65,8 +63,28 @@ const JobDetails = () => {
             .catch(error => {
                 console.error(error);
             });
+
+
     }
 
+    // update job Applicants number
+    const updateJobApplicant = (id) => {
+        const updatedJobApplicantsCount = jobApplicantsCount + 1;
+        // console.log(id);
+        axios.patch(`http://localhost:3000/jobs/${id}/incrementApplicants`, updateJobApplicant)
+            .then(res => {
+                // console.log(res.data);
+                if (res.status === 200) {
+
+                    setJobApplicantsCount(updatedJobApplicantsCount);
+                    // toast.success('Application Successful');
+                    // closeModal();
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
 
     return (
         <div className="card w-[700px] mx-auto py-4">
@@ -78,7 +96,7 @@ const JobDetails = () => {
                         <div className="space-y-2">
                             <h3 className="text-[#f97316] text-center text-5xl font-medium font-kanit ">{jobTitle}</h3>
                             <p><span className="font-medium">Salary Range :</span> {salaryRange}</p>
-                            <p><span className="font-medium">Number of Applicants :</span> {jobApplicants}</p>
+                            <p><span className="font-medium">Number of Applicants :</span> {jobApplicantsCount}</p>
                             <p><span className="font-medium">Application Deadline :</span> {moment(applicationDeadline).format("Do MMM YYYY")}</p>
                         </div>
                     </div>
@@ -118,7 +136,7 @@ const JobDetails = () => {
                                     </label>
                                 </div>
                                 <div className="flex justify-center pt-4">
-                                    <button className="bg-[#f97316] hover:bg-[#ff9416] text-white px-3 py-2 rounded-md font-medium flex items-center">Submit Application</button>
+                                    <button className="bg-[#f97316] hover:bg-[#ff9416] text-white px-3 py-2 rounded-md font-medium flex items-center" onClick={() => updateJobApplicant(_id)}>Submit Application</button>
                                 </div>
                             </form>
                             <div className="modal-action">
