@@ -1,0 +1,15 @@
+.activeTab {
+    background-color: #f97316;
+    color: white;
+    border-top-left-radius: 0.50rem;
+    border-top-right-radius: 0.50rem;
+    padding: 4px 8px;
+}
+
+.inactiveTab {
+    background-color: gray;
+    color: #333;
+    border-top-left-radius: 0.50rem;
+    border-top-right-radius: 0.50rem;
+    padding: 4px 8px;
+}
