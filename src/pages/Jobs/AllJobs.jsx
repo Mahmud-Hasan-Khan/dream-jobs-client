@@ -4,9 +4,10 @@ import useJobs from "../../hook/useJobs";
 import { FaSearch } from 'react-icons/fa';
 import moment from "moment";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const AllJobs = () => {
-    const { data, isLoading, isFetching, refetch } = useJobs();
+    const { data, isLoading } = useJobs();
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState([]);
 
@@ -22,10 +23,6 @@ const AllJobs = () => {
         const filterJobs = data.filter(jobData => jobData.jobTitle.toLowerCase().includes(searchQuery.toLowerCase()));
         setFilteredData(filterJobs);
     };
-
-    const handleViewDetails = (id) => {
-        console.log(id);
-    }
 
     return (
         <div>
@@ -94,12 +91,11 @@ const AllJobs = () => {
                                                     <td>{moment(jobData?.applicationDeadline).format("Do MMM YYYY")}</td>
                                                     <td>{jobData?.salaryRange}</td>
                                                     <td>
-                                                        <button
-                                                            onClick={() => handleViewDetails(jobData._id)}
+                                                        <Link to={`/jobDetails/${jobData._id}`}
                                                             className="bg-[#00AEEF] hover:bg-[#ff9416] p-2 rounded text-white font-medium"
                                                         >
                                                             Details
-                                                        </button>
+                                                        </Link>
                                                     </td>
                                                 </tr>
                                             ))}
