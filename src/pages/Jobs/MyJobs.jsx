@@ -4,13 +4,16 @@ import { Helmet } from 'react-helmet-async';
 import SectionTitle from '../../components/SectionTitle';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import { MdOutlineDeleteOutline } from "react-icons/md";
+import Swal from 'sweetalert2';
 
 const MyJobs = () => {
     const [userJobs, setUserJobs] = useState([]);
     const { user, loading } = useAuth();
+    console.log(user?.email);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/jobs?email=${user?.email}`)
+        fetch(`http://localhost:3000/perUerJobs?email=${user?.email}`)
             .then((response) => response.json())
             .then((data) => {
                 setUserJobs(data);
@@ -22,6 +25,39 @@ const MyJobs = () => {
 
     let serial = 1;
     console.log(userJobs);
+
+    const handleDeleteJob = (id) => {
+        // console.log(id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                console.log('delete conform');
+                // delete single api data from server
+                fetch(`http://localhost:3000/jobsDelete/${id} `,
+                    {
+                        method: 'DELETE',
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+
+                            // update state
+                            const remaining = userJobs.filter(job => job._id !== id);
+                            setUserJobs(remaining)
+                        }
+                    })
+            }
+        })
+    }
 
     return (
         <div>
@@ -52,7 +88,8 @@ const MyJobs = () => {
                                             <th>Job Posting Date</th>
                                             <th>Application Deadline</th>
                                             <th>Salary range</th>
-                                            <th>Action</th>
+                                            <th>Update</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,9 +106,10 @@ const MyJobs = () => {
                                                         to={`/jobDetails/${jobData._id}`}
                                                         className="bg-[#00AEEF] hover:bg-[#ff9416] p-2 rounded text-white font-medium"
                                                     >
-                                                        Details
+                                                        Update
                                                     </Link>
                                                 </td>
+                                                <td><button onClick={() => handleDeleteJob(jobData._id)} className="bg-red-500 hover:bg-[#00AEEF] p-2 rounded"> <MdOutlineDeleteOutline className="text-xl text-white"></MdOutlineDeleteOutline> </button></td>
                                             </tr>
                                         ))}
                                     </tbody>

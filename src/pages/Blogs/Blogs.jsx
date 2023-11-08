@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../components/SectionTitle";
 import { usePDF } from 'react-to-pdf';
 
@@ -5,6 +6,9 @@ const Blogs = () => {
     const { toPDF, targetRef } = usePDF({ filename: 'page.pdf' });
     return (
         <div>
+            <Helmet>
+                <title>Dream Jobs | Blogs</title>
+            </Helmet>
             <div className="flex justify-end pt-4">
                 <button className="btn-login-logout" onClick={() => toPDF()}>Download PDF</button>
             </div>
