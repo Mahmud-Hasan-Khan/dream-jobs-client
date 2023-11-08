@@ -103,7 +103,7 @@ const MyJobs = () => {
                                                 <td>{jobData?.salaryRange}</td>
                                                 <td>
                                                     <Link
-                                                        to={`/jobDetails/${jobData._id}`}
+                                                        to={`/jobUpdate/${jobData._id}`}
                                                         className="bg-[#00AEEF] hover:bg-[#ff9416] p-2 rounded text-white font-medium"
                                                     >
                                                         Update
