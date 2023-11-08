@@ -25,7 +25,7 @@ const JobByCategoryCard = ({ jobData }) => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <figure>
+            <figure className="lg:w-1/2">
                 <img
                     src={bannerURL}
                     alt="instructor"
@@ -33,14 +33,14 @@ const JobByCategoryCard = ({ jobData }) => {
                         }`}
                 />
             </figure>
-            <div className="px-2 py-2 lg:py-0 w-96 my-auto space-y-1">
+            <div className="lg:pl-10 px-2 py-4 lg:py-0 w-96 my-auto space-y-1">
                 <h2 className="card-title text-[#05d6f7]">{jobTitle}</h2>
                 <p><span className="font-medium">Posted By :</span> {userName}</p>
                 <p><span className="font-medium">Posting Date :</span> {moment(jobPostingDate).format("Do MMM YYYY")}</p>
                 <p><span className="font-medium">Deadline :</span> {moment(applicationDeadline).format("Do MMM YYYY")}</p>
                 <p><span className="font-medium">Salary Range :</span> {salaryRange}</p>
                 <p><span className="font-medium">Applicants Number :</span> {jobApplicants}</p>
-                <div className="pt-1">
+                <div className="py-1">
                     <Link className="bg-[#f97316] hover:bg-[#ff9416] flex items-center text-white font-medium rounded p-2 w-fit" to={`/jobDetails/${_id}`} >View Details<FcViewDetails /></Link>
                 </div>
             </div>

@@ -65,7 +65,7 @@ function JobByCategory() {
 
 function JobList({ jobs }) {
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 place-items-center py-2 lg:py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 place-items-center py-2 lg:py-6 lg:px-12 px-2">
             {
                 jobs.map(jobData => <JobByCategoryCard key={jobData._id} jobData={jobData} ></JobByCategoryCard>)
             }
