@@ -46,7 +46,7 @@ const JobByCategory = () => {
 
     return (
         <section ref={sectionRef}>
-            <div>
+            <div data-aos="fade-left">
                 <SectionTitle heading="Job by Category" subheading="Find Your Job by Category"></SectionTitle>
             </div>
             <div>
