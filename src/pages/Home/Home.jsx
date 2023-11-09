@@ -3,6 +3,8 @@ import Banner from "./Banner";
 import JobByCategory from "./JobByCategory";
 import Working from "./Working";
 import FeaturedEmployee from "./FeaturedEmployee";
+import CareerAdvice from "./CareerAdvice";
+
 
 const Home = () => {
     return (
@@ -13,6 +15,7 @@ const Home = () => {
             <Banner></Banner>
             <JobByCategory></JobByCategory>
             <FeaturedEmployee></FeaturedEmployee>
+            <CareerAdvice></CareerAdvice>
             {/* <Working></Working> */}
         </div>
     );
