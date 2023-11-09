@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
-const JobByCategoryCard = ({ jobData }) => {
-    // console.log(jobData);
-    const { _id, bannerURL, jobPostingDate, jobTitle, userName, applicationDeadline, salaryRange, jobApplicants } = jobData ? jobData : {};
+const JobByCategoryCard = ({ job }) => {
+    // console.log(job);
+    const { _id, bannerURL, jobPostingDate, jobTitle, userName, applicationDeadline, salaryRange, jobApplicants } = job ? job : {};
     const [isHovered, setIsHovered] = useState(false);
 
 
@@ -49,7 +49,7 @@ const JobByCategoryCard = ({ jobData }) => {
 };
 
 JobByCategoryCard.propTypes = {
-    jobData: PropTypes.object
+    job: PropTypes.object
 }
 
 export default JobByCategoryCard;

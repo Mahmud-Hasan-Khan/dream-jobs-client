@@ -1,80 +1,84 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import './JobByCategory.css';
-import PropTypes from 'prop-types';
-import JobByCategoryCard from './JobByCategoryCard';
-import SectionTitle from '../../components/SectionTitle';
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css'
+import JobByCategoryCard from "./JobByCategoryCard";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { motion } from "framer-motion";
+import SectionTitle from "../../components/SectionTitle";
 
-function JobByCategory() {
+const JobByCategory = () => {
+
     const [jobs, setJobs] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const [activeTab, setActiveTab] = useState(0);
+
+    const sectionRef = useRef(null);
+    const [inView, setInView] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/categories')
-            .then((response) => {
-                setCategories(response.data);
-            });
 
-        axios.get('http://localhost:3000/jobs')
-            .then((response) => {
-                setJobs(response.data);
+        axios.get('http://localhost:3000/allJobs')
+            .then((res) => {
+                setJobs(res.data);
             });
     }, []);
 
-    const handleCategoryChange = (category) => {
-        setSelectedCategory(category);
-    };
+    console.log(jobs);
 
-    return (
-        <div className="bg-base-100 shadow">
-            <SectionTitle heading={'Job by Category'} subheading={'Find your job by category'}></SectionTitle>
-            <Tabs>
-                <TabList className='flex items-center justify-between bg-base-200 pt-4 rounded shadow'>
-                    {categories.map((category) => (
-                        <Tab
-                            key={category._id}
-                            onClick={() => handleCategoryChange(category.jobCategory)}
-                            selectedClassName="activeTab"
-                            className="bg-gray-300 px-2 py-1 rounded-t-lg"
-                        >
-                            {category.jobCategory}
-                        </Tab>
-                    ))}
-                    <Tab
-                        onClick={() => handleCategoryChange('')} selectedClassName="activeTab"
-                        className="bg-gray-300 px-2 py-1 rounded-t-lg border border-gray-300 cursor-pointer"
-                    >
-                        All Jobs
-                    </Tab>
-                </TabList>
-                {categories.map((category) => (
-                    <TabPanel key={category._id}>
-                        <JobList jobs={jobs.filter((job) => job.jobCategory === category.jobCategory)} />
-                    </TabPanel>
-                ))}
-                <TabPanel>
-                    <JobList jobs={selectedCategory ? jobs.filter((job) => job.jobCategory === selectedCategory) : jobs} />
-                </TabPanel>
-            </Tabs>
-        </div>
-    );
-}
-
-function JobList({ jobs }) {
-    return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 place-items-center py-2 lg:py-6 lg:px-12 px-2">
-            {
-                jobs.map(jobData => <JobByCategoryCard key={jobData._id} jobData={jobData} ></JobByCategoryCard>)
+    useEffect(() => {
+        const handleScroll = () => {
+            if (sectionRef.current) {
+                const rect = sectionRef.current.getBoundingClientRect();
+                setInView(rect.top < window.innerHeight);
             }
-        </div>
-    );
-}
+        };
 
-JobList.propTypes = {
-    jobs: PropTypes.array
-}
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    AOS.init({
+        duration: 3000,
+    })
+
+    return (
+        <section ref={sectionRef}>
+            <div>
+                <SectionTitle heading="Job by Category" subheading="Find Your Job by Category"></SectionTitle>
+            </div>
+            <div>
+                <Tabs selectedIndex={activeTab} onSelect={(index) => setActiveTab(index)}>
+                    <TabList className='flex items-center justify-between bg-base-200 pt-4 rounded shadow'>
+                        <Tab>On Site Job</Tab>
+                        <Tab>Remote Job</Tab>
+                        <Tab>Hybrid</Tab>
+                        <Tab>Part Time</Tab>
+                        <Tab>All Jobs</Tab>
+                    </TabList>
+
+                    {['On Site', 'Remote', 'Hybrid', 'Part Time', 'All Jobs'].map((category, index) => (
+                        <TabPanel key={index}>
+                            <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-6 place-items-center py-2 lg:py-6 lg:px-12 px-2">
+                                {jobs
+                                    .filter((job) => category === 'All Jobs' ? true : job.jobCategory === category)
+                                    .map((job, index) => (<motion.div
+                                        key={job._id}
+                                        initial={{ opacity: 0, y: 50 }}
+                                        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                                        transition={{ type: "spring", bounce: 0.4, duration: 0.8, delay: index * 0.2 }}
+                                    > <JobByCategoryCard job={job} ></JobByCategoryCard> </motion.div>)
+                                    )}
+                            </motion.div>
+                        </TabPanel>
+                    ))}
+                </Tabs>
+            </div>
+        </section>
+
+    );
+};
 
 export default JobByCategory;
