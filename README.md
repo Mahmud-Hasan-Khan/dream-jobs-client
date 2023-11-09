@@ -1,5 +1,5 @@
 # Dream Jobs
-    A simple full-stack Job Seeking website. This job listing website where users can post jobs, search & apply jobs etc.
+A simple full-stack Job Seeking website. This job listing website where users can post jobs, search & apply jobs etc.
 ## Project features
 -  Home page have a `Navbar`, `Banner`, `A banner section. Inside the banner there have a Heading Title, Short Description and a Search Input Field with a button.` `Footer` `Navbar` `with Active Route`.
 
