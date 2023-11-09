@@ -48,7 +48,7 @@ const FeaturedEmployee = () => {
                     <SectionTitle heading="Featured Employee" subheading="Find Your Job from Featured Employee"></SectionTitle>
                 </div>
 
-                <motion.div className="grid grid-cols-1 lg:grid-cols-4 gap-6 place-items-center py-2 lg:py-6 lg:px-12 px-2">
+                <motion.div className="grid grid-cols-1 lg:grid-cols-4 gap-2 place-items-center py-2 lg:py-6 lg:px-10 px-2">
                     {
                         featuredEmployee.map((employeeData, index) => (<motion.div
                             key={employeeData._id}

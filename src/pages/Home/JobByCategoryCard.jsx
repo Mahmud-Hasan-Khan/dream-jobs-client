@@ -3,9 +3,14 @@ import { useState } from "react";
 import { FcViewDetails } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
-
+import useAuth from "../../hook/useAuth";
+import { toast } from "react-hot-toast";
 
 const JobByCategoryCard = ({ job }) => {
+
+    const { user } = useAuth();
+    // console.log(user.email);
+
     // console.log(job);
     const { _id, bannerURL, jobPostingDate, jobTitle, userName, applicationDeadline, salaryRange, jobApplicants } = job ? job : {};
     const [isHovered, setIsHovered] = useState(false);
@@ -18,6 +23,9 @@ const JobByCategoryCard = ({ job }) => {
     const handleMouseLeave = () => {
         setIsHovered(false);
     };
+
+
+
 
     return (
         <div
@@ -41,7 +49,20 @@ const JobByCategoryCard = ({ job }) => {
                 <p><span className="font-medium">Salary Range :</span> {salaryRange}</p>
                 <p><span className="font-medium">Applicants Number :</span> {jobApplicants}</p>
                 <div className="py-1">
-                    <Link className="bg-[#f97316] hover:bg-[#ff9416] flex items-center text-white font-medium rounded p-2 w-fit" to={`/jobDetails/${_id}`} >View Details<FcViewDetails /></Link>
+                    {/* <Link className="bg-[#f97316] hover:bg-[#ff9416] flex items-center text-white font-medium rounded p-2 w-fit" to={`/jobDetails/${_id}`} >View Details<FcViewDetails /></Link> */}
+                    <Link
+                        className="bg-[#f97316] hover:bg-[#ff9416] flex items-center text-white font-medium rounded p-2 w-fit"
+                        to={`/jobDetails/${_id}`}
+                        onClick={() => {
+                            if (!user) {
+                                toast.error("You have to log in first to view details");
+                                return
+                            }
+                        }}
+                    >
+                        View Details<FcViewDetails />
+                    </Link>
+
                 </div>
             </div>
         </div>

@@ -5,8 +5,11 @@ import { FaSearch } from 'react-icons/fa';
 import moment from "moment";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hook/useAuth";
+import { toast } from "react-hot-toast";
 
 const AllJobs = () => {
+    const { user } = useAuth();
     const { data, isLoading } = useJobs();
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState([]);
@@ -93,7 +96,12 @@ const AllJobs = () => {
                                                     <td>
                                                         <Link to={`/jobDetails/${jobData._id}`}
                                                             className="bg-[#00AEEF] hover:bg-[#ff9416] p-2 rounded text-white font-medium"
-                                                        >
+                                                            onClick={() => {
+                                                                if (!user) {
+                                                                    toast.error("You have to log in first to view details");
+                                                                    return
+                                                                }
+                                                            }}                                                  >
                                                             Details
                                                         </Link>
                                                     </td>
