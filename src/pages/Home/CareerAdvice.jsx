@@ -8,8 +8,6 @@ import image4 from '../../assets/image/TopCareerAdvice/Career-Advice-Position5@2
 
 const CareerAdvice = () => {
 
-
-
     AOS.init({
         duration: 3000,
     })
@@ -19,8 +17,8 @@ const CareerAdvice = () => {
             <div data-aos="fade-left">
                 <SectionTitle heading="Top Career Advice" subheading="Get Top Career Advice From Expert"></SectionTitle>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 py-4" data-aos="fade-right">
-                <div className="card w-72 bg-base-100 shadow-xl border">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-2 py-4 place-items-center" data-aos="fade-right">
+                <div className="card w-72 h-80 bg-base-100 shadow-xl border">
                     <figure className="px-4 pt-4">
                         <img src={image1} alt="Shoes" className="rounded-xl" />
                     </figure>
@@ -29,7 +27,7 @@ const CareerAdvice = () => {
                         <p>11 awesome free career self assessment</p>
                     </div>
                 </div>
-                <div className="card w-72 h bg-base-100 shadow-xl border">
+                <div className="card w-72 h-80 bg-base-100 shadow-xl border">
                     <figure className="px-4 pt-4">
                         <img src={image2} alt="Shoes" className="rounded-xl" />
                     </figure>
@@ -38,7 +36,7 @@ const CareerAdvice = () => {
                         <p>How to start looking for a job</p>
                     </div>
                 </div>
-                <div className="card w-72 bg-base-100 shadow-xl border">
+                <div className="card w-72 h-80 bg-base-100 shadow-xl border">
                     <figure className="px-4 pt-4">
                         <img src={image3} alt="Shoes" className="rounded-xl" />
                     </figure>
@@ -47,7 +45,7 @@ const CareerAdvice = () => {
                         <p>Resume samples</p>
                     </div>
                 </div>
-                <div className="card w-72 bg-base-100 shadow-xl border">
+                <div className="card w-72 h-80 bg-base-100 shadow-xl border">
                     <figure className="px-4 pt-4">
                         <img src={image4} alt="Shoes" className="rounded-xl" />
                     </figure>
