@@ -1,10 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "./Banner";
 import JobByCategory from "./JobByCategory";
-import Working from "./Working";
 import FeaturedEmployee from "./FeaturedEmployee";
 import CareerAdvice from "./CareerAdvice";
-
 
 const Home = () => {
     return (
@@ -16,7 +14,6 @@ const Home = () => {
             <JobByCategory></JobByCategory>
             <FeaturedEmployee></FeaturedEmployee>
             <CareerAdvice></CareerAdvice>
-            {/* <Working></Working> */}
         </div>
     );
 };

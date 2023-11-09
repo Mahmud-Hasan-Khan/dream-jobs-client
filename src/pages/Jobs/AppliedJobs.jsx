@@ -10,8 +10,19 @@ const AppliedJobs = () => {
 
     const [selectedCategory, setSelectedCategory] = useState('');
 
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/appliedJobs?email=${user?.email}`)
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             setAppliedJobs(data);
+    //         })
+    //         .catch((error) => {
+    //             console.error(error);
+    //         });
+    // }, [user?.email]);
+
     useEffect(() => {
-        fetch(`http://localhost:3000/appliedJobs?email=${user?.email}`)
+        fetch(`http://localhost:3000/appliedJobs?email=${user?.email}`, { credentials: 'include' })
             .then((response) => response.json())
             .then((data) => {
                 setAppliedJobs(data);
@@ -22,7 +33,7 @@ const AppliedJobs = () => {
     }, [user?.email]);
 
     let serial = 1;
-    console.log(appliedJobs);
+    // console.log(appliedJobs);
 
     const filteredJobs = appliedJobs.filter((jobData) =>
         selectedCategory === '' || jobData.jobCategory === selectedCategory
