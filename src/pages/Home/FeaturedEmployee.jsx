@@ -21,7 +21,7 @@ const FeaturedEmployee = () => {
             });
     }, []);
 
-    console.log(featuredEmployee);
+    // console.log(featuredEmployee);
 
     useEffect(() => {
         const handleScroll = () => {

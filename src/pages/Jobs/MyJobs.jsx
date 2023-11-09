@@ -10,10 +10,20 @@ import Swal from 'sweetalert2';
 const MyJobs = () => {
     const [userJobs, setUserJobs] = useState([]);
     const { user, loading } = useAuth();
-    console.log(user?.email);
+    // console.log(user?.email);
 
+    // useEffect(() => {
+    //     fetch(`http://localhost:3000/perUserJobs?email=${user?.email}`)
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             setUserJobs(data);
+    //         })
+    //         .catch((error) => {
+    //             console.error(error);
+    //         });
+    // }, [user?.email]);
     useEffect(() => {
-        fetch(`http://localhost:3000/perUerJobs?email=${user?.email}`)
+        fetch(`http://localhost:3000/perUserJobs?email=${user?.email}`, { credentials: 'include' })
             .then((response) => response.json())
             .then((data) => {
                 setUserJobs(data);
@@ -24,7 +34,7 @@ const MyJobs = () => {
     }, [user?.email]);
 
     let serial = 1;
-    console.log(userJobs);
+    // console.log(userJobs);
 
     const handleDeleteJob = (id) => {
         // console.log(id);

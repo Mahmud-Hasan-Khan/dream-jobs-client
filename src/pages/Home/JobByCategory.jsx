@@ -24,7 +24,7 @@ const JobByCategory = () => {
             });
     }, []);
 
-    console.log(jobs);
+    // console.log(jobs);
 
     useEffect(() => {
         const handleScroll = () => {
