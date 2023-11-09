@@ -15,7 +15,7 @@ const FeaturedEmployee = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:3000/featuredEmployee')
+        axios.get('https://dream-jobs-server-psi.vercel.app/featuredEmployee')
             .then((res) => {
                 setFeaturedEmployee(res.data);
             });

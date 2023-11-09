@@ -13,7 +13,7 @@ const MyJobs = () => {
     // console.log(user?.email);
 
     // useEffect(() => {
-    //     fetch(`http://localhost:3000/perUserJobs?email=${user?.email}`)
+    //     fetch(`https://dream-jobs-server-psi.vercel.app/perUserJobs?email=${user?.email}`)
     //         .then((response) => response.json())
     //         .then((data) => {
     //             setUserJobs(data);
@@ -23,7 +23,7 @@ const MyJobs = () => {
     //         });
     // }, [user?.email]);
     useEffect(() => {
-        fetch(`http://localhost:3000/perUserJobs?email=${user?.email}`, { credentials: 'include' })
+        fetch(`https://dream-jobs-server-psi.vercel.app/perUserJobs?email=${user?.email}`, { credentials: 'include' })
             .then((response) => response.json())
             .then((data) => {
                 setUserJobs(data);
@@ -51,7 +51,7 @@ const MyJobs = () => {
 
                 console.log('delete conform');
                 // delete single api data from server
-                fetch(`http://localhost:3000/jobsDelete/${id} `,
+                fetch(`https://dream-jobs-server-psi.vercel.app/jobsDelete/${id} `,
                     {
                         method: 'DELETE',
                     })

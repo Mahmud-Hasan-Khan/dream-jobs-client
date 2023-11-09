@@ -18,7 +18,7 @@ const JobByCategory = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:3000/allJobs')
+        axios.get('https://dream-jobs-server-psi.vercel.app/allJobs')
             .then((res) => {
                 setJobs(res.data);
             });

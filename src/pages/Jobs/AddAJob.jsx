@@ -38,7 +38,7 @@ const AddAJob = () => {
         const toastId = toast.loading('Adding a new job...');
 
         // send New added job data to server
-        axios.post('http://localhost:3000/jobs', newJob, {
+        axios.post('https://dream-jobs-server-psi.vercel.app/jobs', newJob, {
             headers: {
                 'Content-Type': 'application/json'
             }

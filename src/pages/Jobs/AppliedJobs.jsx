@@ -11,7 +11,7 @@ const AppliedJobs = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
 
     // useEffect(() => {
-    //     fetch(`http://localhost:3000/appliedJobs?email=${user?.email}`)
+    //     fetch(`https://dream-jobs-server-psi.vercel.app/appliedJobs?email=${user?.email}`)
     //         .then((response) => response.json())
     //         .then((data) => {
     //             setAppliedJobs(data);
@@ -22,7 +22,7 @@ const AppliedJobs = () => {
     // }, [user?.email]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/appliedJobs?email=${user?.email}`, { credentials: 'include' })
+        fetch(`https://dream-jobs-server-psi.vercel.app/appliedJobs?email=${user?.email}`, { credentials: 'include' })
             .then((response) => response.json())
             .then((data) => {
                 setAppliedJobs(data);

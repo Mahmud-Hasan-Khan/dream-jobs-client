@@ -49,7 +49,7 @@ const JobDetails = () => {
         const toastId = toast.loading('Applying for job...');
 
         // send Applied job data to server
-        axios.post('http://localhost:3000/appliedJobs', appliedJob, {
+        axios.post('https://dream-jobs-server-psi.vercel.app/appliedJobs', appliedJob, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -72,7 +72,7 @@ const JobDetails = () => {
     const updateJobApplicant = (id) => {
         const updatedJobApplicantsCount = jobApplicantsCount + 1;
         // console.log(id);
-        axios.patch(`http://localhost:3000/jobs/${id}/incrementApplicants`, updateJobApplicant)
+        axios.patch(`https://dream-jobs-server-psi.vercel.app/jobs/${id}/incrementApplicants`, updateJobApplicant)
             .then(res => {
                 // console.log(res.data);
                 if (res.status === 200) {

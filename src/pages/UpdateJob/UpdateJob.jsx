@@ -38,7 +38,7 @@ const UpdateJob = () => {
         }
 
         // send data to server 
-        fetch(`http://localhost:3000/jobUpdate/${jobUpdate._id}`, {
+        fetch(`https://dream-jobs-server-psi.vercel.app/jobUpdate/${jobUpdate._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
