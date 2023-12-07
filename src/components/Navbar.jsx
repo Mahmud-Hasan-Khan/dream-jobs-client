@@ -106,7 +106,6 @@ const Navbar = () => {
                                     height='38'
                                     width='38'
                                 />
-
                             </div>
                             <Link onClick={handleLogout} className='btn-login-logout' to="/login">Logout</Link>
                         </>

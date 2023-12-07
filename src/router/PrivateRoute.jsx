@@ -13,7 +13,7 @@ const PrivateRoute = ({ children }) => {
             <span className="loading loading-infinity loading-lg text-[#00AEEF]"></span>
         </div>
     }
-    if (user) {
+    if (user && !loading) {
         return children
     }
 
