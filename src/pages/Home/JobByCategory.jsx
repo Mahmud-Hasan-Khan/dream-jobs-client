@@ -60,7 +60,7 @@ const JobByCategory = () => {
 
                     {['On Site', 'Remote', 'Hybrid', 'Part Time', 'All Jobs'].map((category, index) => (
                         <TabPanel key={index}>
-                            <motion.div className="grid grid-cols-1 lg:grid-cols-3 gap-6 place-items-center py-2 lg:py-6 lg:px-12 px-2">
+                            <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-6 place-items-center py-2 lg:py-6 lg:px-12 px-2">
                                 {jobs
                                     .filter((job) => category === 'All Jobs' ? true : job.jobCategory === category)
                                     .map((job, index) => (<motion.div
